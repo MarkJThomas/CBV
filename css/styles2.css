@@ -1,756 +1,115 @@
-/* --------------------------
-   General Reset and Body Styles
---------------------------- */
-
 body {
     margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #ffffff;
-    color: #333;
-    scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
-}
-
-/* --------------------------
-   Navigation Bar Styles
---------------------------- */
-
-/* Overlay Navigation Bar Styles */
-.overlay-navbar {
-    position: absolute; /* Positions the nav relative to the overlay */
-    top: 20px;          /* Position from the top */
-    left: 50%;          /* Center horizontally */
-    transform: translateX(-50%); /* Adjust for perfect centering */
-    z-index: 3;         /* Ensures it appears above other elements */
-}
-
-.overlay-nav-links {
-    list-style: none; /* Removes default list styling */
-    display: flex; 
-       /* Arranges links horizontally */
-    gap: 30px;        /* Spacing between links */
-    padding: 0;       /* Removes default padding */
-    margin: 0;        /* Removes default margin */
-}
-
-.overlay-nav-links li a {
-    text-decoration: none;        /* Removes underline */
-    color: white;                 /* White text */
-    font-weight: bold;            /* Bold text */
-    font-size: 18px;              /* Adjust font size as needed */
-    transition: color 0.3s ease; /* Smooth transition on hover */
-}
-
-.overlay-nav-links li a:hover {
-    color: #FF7E5F; /* Changes color on hover for interactivity */
-}
-
-.logo a {
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333333;
-}
-
-.burger {
-    display: none;
-    cursor: pointer;
-}
-
-.burger div {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 5px;
-    transition: all 0.3s ease;
-}
-
-/* Responsive Navigation Styles */
-@media (max-width: 768px) {
-    .burger {
-        display: block;
-    }
-
-    /* Hamburger Icon Animation */
-    .toggle .line1 {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .toggle .line2 {
-        opacity: 0;
-    }
-
-    .toggle .line3 {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-}
-
-.hero-section {
-    position: relative;
+    font-family: Arial, sans-serif;
     height: 100vh;
-    width: 100%;
     overflow: hidden;
-}
-
-.bg-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-}
-
-/* Overlay Styles */
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
     display: flex;
-    flex-direction: column; /* Arrange children vertically */
-    justify-content: space-between; /* Space out navbar and content */
-    justify-content: center;
-    align-items: center;
-    z-index: 1; /* Above the video */
-}
-
-/* Hero Content Styles */
-.hero-content {
-    text-align: center;
-    color: #ffffff;
-    padding: 20px;
-    z-index: 2; /* Ensures content is above the overlay */
-}
-
-.hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6)
-}
-
-.hero-content p {
-    font-size: 24px;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6)
-}
-
-.hero-content .btn {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.hero-content .btn:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 32px;
-    }
-
-    .hero-content p {
-        font-size: 18px;
-    }
-
-    .hero-content .btn {
-        font-size: 16px;
-        padding: 8px 16px;
-    }
-}
-
-
-/* --------------------------
-   Additional Image Section Styles
---------------------------- */
-
-/* Container for the Additional Image Section */
-.additional-image-section {
-    display: flex;
-     /* Set the section to occupy full viewport height */
-     height: 100vh;                    
-    flex-direction: column;           
-    align-items: center;              
-    justify-content: center;          
-    /* Removed fixed height to allow content-driven height */
-    /* height: 100vh; */              
-
-    /* Updated background properties */
-    background-image: url('../images/view_mirador.jpeg'); /* Added background image */
-    background-size: cover;                       /* Ensures the image covers the entire section */
-    background-position: center;                  /* Centers the background image */
-    background-repeat: no-repeat;                 /* Prevents the background image from repeating */
-
-    /* Removed white background color */
-    /* background-color: #ffffff; */             
-
-    color: white; /* Sets the default text color to white */
-    overflow: hidden;                 
-    position: relative;               
-    transition: opacity 1s ease, transform 1s ease; 
-    opacity: 0;                        
-    transform: scale(0.95);            
-}
-
-/* Optional: Add a dark overlay to enhance text readability */
-.additional-image-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
-    z-index: 1; /* Places the overlay above the background but below the content */
-}
-
-/* Ensure that the text is above the overlay */
-.additional-image-section h2,
-.additional-image-section p,
-.image-wrapper {
-    position: relative;
-    z-index: 2; /* Places content above the overlay */
-    text-align: center; /* Centers the text */
-}
-
-/* Visible State Class */
-.additional-image-section.visible {
-    opacity: 1;                         
-    transform: scale(1);                
-}
-
-/* Location Heading Styles */
-.location-heading {
-    position: relative;                   
-    display: inline-block;                
-    font-size: 28px;                      
-    font-weight: 700;                     
-    color: white; /* Changed from #333333 to white */                       
-    margin-top: 5px;                      
-    text-transform: uppercase;            
-    letter-spacing: 2px;                   
-    font-family: 'Playfair Display', serif; 
-    margin-bottom: 10px;                   
-
-    /* Add text shadow for better visibility */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
-}
-
-.location-heading::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -8px;                          
-    transform: translateX(-50%);
-    width: 60%;                            
-    height: 4px;                           
-    background: linear-gradient(90deg, #FF7E5F, #FEB47B); 
-    border-radius: 2px;                    
-}
-
-/* Location Description Styles */
-.location-description {
-    font-size: 16px;                        
-    color: white; /* Changed from #555555 to white */                         
-    max-width: 800px;                       
-    margin: 15px auto 20px auto;            
-    line-height: 1.6;                       
-    text-align: center;                     
-    font-family: 'Roboto', sans-serif;      
-
-    /* Add text shadow for better visibility */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); 
-}
-
-/* Image Wrapper Styles */
-.image-wrapper {
-    width: 100%;                            
-    max-width: 700px; /* Adjust as needed */
-    overflow: hidden;                       
-    border-radius: 10px;                    
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: transform 1s ease;          
-    transform: scale(1);                    
-    
-    /* Semi-transparent background without affecting the image */
-    background-color: rgba(255, 255, 255, 0); /* 30% opacity white */
-    padding: 20px;                            /* Adds spacing around the image */
-    
-    /* Centering the wrapper */
-    margin: 20px auto; /* Centers horizontally and adds vertical spacing */
-}
-
-/* SVG Image Styles */
-.additional-image {
-    width: 100%;                            
-    height: auto;                           
-    display: block;                         
-    margin: 0 auto; /* Centers the SVG within the wrapper */
-    transition: transform 0.5s ease;        
-    transform-origin: center; /* Ensures scaling originates from the center */
-    opacity: 1; /* Keeps the SVG fully opaque */
-}
-
-/* Zoom-In Effect Class */
-.zoom-in {
-    transform: scale(1.05);                  
-    opacity: 1;                               
-}
-
-
-/* --------------------------
-   Text Section Styles
---------------------------- */
-
-/* Container for the Text Section */
-.text-section {
-    position: relative; /* Establishes a positioning context for absolutely positioned elements */
-    padding: 80px 20px; /* Adjust padding as needed */
-    background-image: url('../images/contour-lines.svg'); /* Existing SVG Background */
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    display: flex; /* Enables Flexbox for centering */
     flex-direction: column;
-    align-items: center; /* Vertically centers content */
-    justify-content: center; /* Horizontally centers content */
-    background-position: center;
-    background-attachment: fixed; /* Optional: Creates a parallax scrolling effect */
-    min-height: 60vh; /* Ensures the section has adequate height */
-    overflow: hidden; /* Prevents child elements from overflowing the section */
 }
 
-/* Semi-Transparent White Box */
-.text-section .background-box {
-    position: absolute; /* Positions the box relative to the text-section */
+/* Map container with vertical scroll */
+#map-container {
+    position: relative;
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.spacer {
+    height: 300vh; /* Spacer for scrolling */
+}
+
+/* Map itself */
+#map {
+    position: sticky;
     top: 0;
-    left: 0;
-    height: 100vh; /* Full viewport height */
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8); /* 50% Transparent White */
-    z-index: 1; /* Places the box below the content */
-    pointer-events: none; /* Allows interactions to pass through to underlying elements */
+    height: 100vh;
+    z-index: 1;
 }
 
-/* Animated Discover SVG Styles */
-.text-section .animated-discover {
-    position: absolute; /* Positions SVG absolutely within the section */
-    top: 50%; /* Centers vertically */
-    left: 50%; /* Centers horizontally */
-    transform: translate(-50%, -50%); /* Adjusts for SVG's dimensions */
-    width: 80%; /* Adjust as needed */
-    height: auto; /* Maintains aspect ratio */
-    z-index: 0; /* Behind background box and content */
-    pointer-events: none; /* Allows interactions to pass through */
-}
-
-
-/* Ensure Content is Above the Background Box and SVG */
-.text-section > * {
-    position: relative; /* Ensures content is positioned above the background box and SVG */
-    z-index: 2; /* Higher z-index than the background-box and animated-contour */
-    text-align: center; /* Centers the text */
-}
-
-/* Text Styles */
-.small-text {
-    font-size: 24px;
-    color: #FF7E5F; /* Darker color for contrast */
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    font-family: 'Playfair Display', serif;
-}
-
-.large-text {
-    font-size: 36px;
-    color: #222222; /* Darker color for better readability */
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 20px;
-}
-
-.small-paragraph {
-    font-size: 24px;
-    color: #444444; /* Darker shade */
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-    font-family: 'Roboto', sans-serif;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Adds subtle shadow for readability */
-}
-
-/* Responsive Adjustments */
-
-@media (max-width: 768px) {
-    .text-section {
-        padding: 60px 15px; /* Adjust padding for smaller screens */
-        background-size: contain; /* Ensures the SVG fits within the section */
-        background-position: top; /* Adjusts background position */
-    }
-
-    .small-text {
-        font-size: 20px;
-    }
-
-    .large-text {
-        font-size: 28px;
-    }
-
-    .small-paragraph {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .text-section {
-        padding: 40px 10px;
-    }
-
-    .small-text {
-        font-size: 18px;
-    }
-
-    .large-text {
-        font-size: 24px;
-    }
-
-    .small-paragraph {
-        font-size: 14px;
-    }
-}
-
-/* --------------------------
-    Image Gallery Section Styles
---------------------------- */
-.image-gallery-section {
-     position: relative;
-     overflow: visible;
-     margin-bottom: 0;
-     background-color: #fff; /* White background */
-     color: #000; /* Black text */
-     height: 100vh; /* Full viewport height */
-     transition: background-color 1s ease; /* Smooth background transition */
-     width: 100%;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-}
-
-
-/* Container for the images using CSS Grid */
-.image-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three equal columns for three lanes */
-    grid-auto-rows: minmax(150px, auto);   /* Automatic row height */
-    gap: 40px; /* Space between lanes and images */
-    width: 90%; /* Occupy 90% of the viewport width */
-    max-width: 1200px; /* Maximum width for larger screens */
-    margin: 0 auto; /* Center the grid horizontally */
-    height: 100vh; /* Full viewport height */
-    align-items: center; /* Vertically center images within grid cells */
-    justify-items: center; /* Horizontally center images within grid cells */
-    perspective: 1000px; /* 3D perspective for child elements */
-    position: relative; /* To position images absolutely if needed */
-}
-
-/* Gallery Item Styling */
-.gallery-item {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.2); /* Initial scale */
-    opacity: 0; /* Start invisible */
-    transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transitions */
-    z-index: 1; /* Stacking context */
-}
-
-/* Gallery Image Styling */
-.gallery-image {
-    width: 200px; /* Adjust as needed */
-    height: 300px; /* Adjust as needed */
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-/* Lane Styling */
-.lane {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* Concluding Text Styles */
-.concluding-text {
-    position: absolute; /* Positioning at the center */
-    top: 50%;
-    left: 50%;
-    height: 73vh; /* Full viewport height */
-    transform: translate(-50%, -50%) scale(0.8); /* Start scaled down */
-    text-align: center;
-    opacity: 0; /* Initially hidden */
-    color: #000; /* Black text */
-    transition: opacity 1s ease, transform 1s ease; /* Smooth transitions */
-    z-index: 2; /* Above images */
-}
-
-.concluding-text h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.concluding-text p {
-    font-size: 18px;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1400px) {
-    .image-gallery {
-        grid-template-columns: repeat(3, 1fr); /* Maintain three columns */
-    }
-}
-
-@media (max-width: 1200px) {
-    .image-gallery {
-        grid-template-columns: repeat(2, 1fr); /* Reduce to two columns on smaller screens */
-    }
-    .gallery-item {
-        width: 80px; /* Adjusted size for smaller screens */
-        height: 120px;
-    }
-
-    .concluding-text h2 {
-        font-size: 28px;
-    }
-
-    .concluding-text p {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 992px) {
-    .image-gallery {
-        grid-template-columns: repeat(1, 1fr); /* Single column on very small screens */
-    }
-    .gallery-item {
-        width: 60px; /* Further adjusted size for mobile */
-        height: 90px;
-    }
-
-    .concluding-text h2 {
-        font-size: 24px;
-    }
-
-    .concluding-text p {
-        font-size: 14px;
-    }
-}
-
-
-/* Optional: Hover Effects for Interactivity */
-.gallery-item:hover {
-    transform: translate(-50%, -50%) scale(4.2); /* Slightly enlarge on hover */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Final Images Container */
-.final-images {
-    display: flex;
-    position: absolute; /* Positioning at the center */
-    justify-content: center;
-    gap: 30px; /* Space between images */
-    margin-top: 50px; /* Space above the final images */
-    opacity: 0; /* Initially hidden for animation */
-    transform: translateY(20px); /* Initial slight downward offset */
-    transition: opacity 1s ease, transform 1s ease; /* Smooth transitions */
-}
-
-/* Final Image Links */
-.final-link {
-    display: block;
-    width: 180px; /* Adjust width as needed */
-    height: 180px; /* Maintain square aspect ratio */
-    overflow: hidden;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effects */
-}
-
-.final-link:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
-}
-
-/* Final Images */
-.final-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure images cover the container */
-    display: block;
-}
-
-/* Leaflet Control Title Styles */
-.leaflet-control-map-title {
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-    padding: 10px;
-    border-radius: 5px;
-    font-family: 'Arial', sans-serif;
-}
-
-.leaflet-control-map-title h1 {
-    margin: 0;
-    font-size: 1.5em;
-    color: #333;
-}
-/* DivIcon Title Label Styles */
-.map-title-label div {
-    background-color: rgba(255, 255, 255, 0); /* Semi-transparent background */
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    font-size: 1.9em;
-    color: #ffffff;
-    box-shadow: 0 0px 0px rgba(0,0,0,0.3);
-}
-
-/* Info Panel */
-#info-panel {
+/* Translucent panel for cards */
+.destination-panel {
     position: fixed;
-    top: 10%;
-    right: 0;
-    width: 30%;
-    height: 80%;
-    background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-    overflow-y: auto;
+    top: 0;
+    right: 1%;
+    height: 100%;
+    width: 15%;
+    background-color: rgba(255, 255, 255, 0);
+    z-index: 2;
+    border-radius: 10px;
     padding: 10px;
-    box-sizing: border-box;
-    transform: translateX(100%); /* Hidden by default */
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    opacity: 0;
-    z-index: 1000;
+    overflow-y: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-#info-panel.visible {
-    transform: translateX(0); /* Slide in */
-    opacity: 1;
-}
-
-#close-panel {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    background: none;
-    border: none;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-.info-content h2 {
-    margin-top: 5;
-}
-
-.info-content a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-.info-content a:hover {
-    text-decoration: underline;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    #info-panel {
-        width: 100%;
-        height: 70%;
-    }
-}
-
-/* ===============================================
-   Zoom Button Styling
-   =============================================== */
-/* Zoom Button */
-#zoom-button {
-    position: absolute;
-    bottom: 30px;               /* Position near the bottom */
-    left: 50%;                  /* Center horizontally */
-    transform: translateX(-50%);/* Adjust to truly center */
-    padding: 12px 24px;
-    background-color: #1f78b4;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    opacity: 0;                 /* Hidden initially */
-    visibility: hidden;         /* Remove from layout */
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-    z-index: 1001;              /* Ensure it stays above the map */
-}
-
-#zoom-button.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-#zoom-button.visible {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-/* ===============================================
-   Zoom Button Disabled State
-   =============================================== */
-   #zoom-button:disabled {
-    background-color: #a6cee3;
-    cursor: not-allowed;
-}
-
-/* Next Section Styling (for demonstration) */
-#next-section {
-    height: 100vh;
-    background-color: #f0f0f0;
-    padding: 50px;
-}
-
-#map-section {
-    position: relative;
-    height: 100vh;
+/* Styling for individual destination cards */
+.destination-card {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Initial opacity set to 0 */
+    transform: scale(0.95);
+    transition: all 0.3s ease;
     width: 100%;
-    overflow: hidden;
-}
-/* --------------------------
-   Main Content Padding
---------------------------- */
-
-/* Main Content Padding to Prevent Overlap with Fixed Navbar */
-main {
-    padding: 100px 50px 50px; /* Top padding should be equal or greater than navbar height */
+    max-width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
 }
 
-footer {
-    position: relative; /* Ensures footer is in the normal flow */
-    margin-top: 0;      /* Removes any top margin */
-    padding: 20px 0;    /* Adds vertical padding as needed */
-    width: 100%;        /* Ensures footer spans the full width */
-    box-sizing: border-box; /* Includes padding within the width */
-    background-color: #f1f1f1; /* Optional: Adds a background color */
-    text-align: center; /* Centers footer content */
+.destination-card.active {
+    opacity: 1; /* Set opacity to 1 when active */
+    transform: translate(-50%, -50%) scale(1);
+    border: 2px solid #007AFF;
+    z-index: 3;
+}
+
+.destination-card.previous {
+    transform: translate(-50%, -150%) scale(0.8);
+    opacity: 0;
+}
+
+.destination-card.next {
+    transform: translate(-50%, 150%) scale(0.8);
+    opacity: 0;
+}
+
+.destination-card h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.destination-card p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.destination-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Scroll to explore text */
+.scroll-text {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    color: #555;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 3;
 }

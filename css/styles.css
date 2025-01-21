@@ -1,6 +1,6 @@
 /* styles.css */
 
-/*
+/* ---------------------------
    General Reset and Body Styles
 --------------------------- */
 body {
@@ -13,7 +13,7 @@ body {
     scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
 }
 
-/* --------------------------
+/* ---------------------------
    Navigation Bar Styles
 --------------------------- */
 
@@ -26,9 +26,9 @@ body {
     z-index: 3;         /* Ensures it appears above other elements */
 }
 
+
 .overlay-nav-links {
     list-style: none; /* Removes default list styling */
-    /* Arranges links horizontally */
     display: flex; 
     gap: 30px;        /* Spacing between links */
     padding: 0;       /* Removes default padding */
@@ -47,13 +47,7 @@ body {
     color: #FF7E5F; /* Changes color on hover for interactivity */
 }
 
-.logo a {
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333333;
-}
-
+/* Burger Menu Styles */
 .burger {
     display: none;
     cursor: pointer;
@@ -87,11 +81,57 @@ body {
     }
 }
 
-/* --------------------------
-   Hero section styles
---------------------------- */
+/* Navigation Bar Styles */
+nav {
+    position: absolute; /* Fixes the nav bar at the top */
+    top: 20px;
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.7); /* Black with 70% opacity */
+    transform: translateX(-50%); /* Adjust for perfect centering */
+    padding: 10px 20px; /* Adjust padding as needed */
+    z-index: 1000; /* Ensure the nav bar overlays other elements */
+}
 
-/* Hero Section Styles */
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0; /* Reset default margin */
+}
+
+.nav-links li {
+    margin: 0 15px; /* Space between links */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff; /* White text for contrast */
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: #ffd700; /* Optional: Change color on hover */
+}
+
+/* Burger Menu Styles (Optional for Mobile Navigation) */
+.burger {
+    display: none; /* Hide burger menu on desktop */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide navigation links on mobile */
+    }
+
+    .burger {
+        display: block; /* Show burger menu on mobile */
+    }
+}
+
+
+/* ---------------------------
+   Hero Section Styles
+--------------------------- */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -143,20 +183,6 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-.hero-content .btn {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.hero-content .btn:hover {
-    background-color: #0056b3;
-}
-
 /* Animation Keyframes */
 @keyframes focus-in-contract-bck {
     0% {
@@ -185,11 +211,6 @@ body {
 
     .hero-content p {
         font-size: 18px;
-    }
-
-    .hero-content .btn {
-        font-size: 16px;
-        padding: 8px 16px;
     }
 }
 
@@ -262,7 +283,6 @@ body {
     color: #ffffff;
     font-size: 18px; /* Adjust text size */
     font-weight: bold;
-    
 }
 
 @keyframes scrollText {
@@ -274,277 +294,12 @@ body {
     }
 }
 
-/* --------------------------
-   Additional Image Section Styles
---------------------------- */
-
-/* Panel Styles for Horizontal Scrolling */
-.panel {
-    flex: 0 0 100vw; /* Each panel takes up 100% of the viewport width */
-    height: 100vh;   /* Full viewport height */
-    scroll-snap-align: start; /* Snap alignment for smooth scrolling */
-}
-
-/* Additional Image Section (inherits from .panel) */
-.additional-image-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-image: url('../images/view_mirador.jpeg'); /* Background image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    position: relative;
-    overflow: hidden;
-    transition: opacity 1s ease, transform 1s ease;
-    opacity: 0; /* Initially hidden for animations */
-    transform: scale(0.95); /* Slightly scaled down initially */
-}
-
-/* Optional: Add a dark overlay to enhance text readability */
-.additional-image-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
-    z-index: 1; /* Places the overlay above the background but below the content */
-}
-
-/* Ensure that the text is above the overlay */
-.additional-image-section h2,
-.additional-image-section p,
-.image-wrapper {
-    position: relative;
-    z-index: 2; /* Places content above the overlay */
-    text-align: center; /* Centers the text */
-}
-
-/* Visible State Class (for animations) */
-.additional-image-section.visible {
-    opacity: 1; /* Fully visible */
-    transform: scale(1); /* Normal scale */
-}
-
-/* Location Heading Styles */
-.location-heading {
-    position: relative;
-    display: inline-block;
-    font-size: 28px;
-    font-weight: 700;
-    color: white;
-    margin-top: 5px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 10px;
-
-    /* Add text shadow for better visibility */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.location-heading::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -8px;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 4px;
-    background: linear-gradient(90deg, #FF7E5F, #FEB47B);
-    border-radius: 2px;
-}
-
-/* Location Description Styles */
-.location-description {
-    font-size: 16px;
-    color: white;
-    max-width: 800px;
-    margin: 15px auto 20px auto;
-    line-height: 1.6;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-
-    /* Add text shadow for better visibility */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-}
-
-/* Image Wrapper Styles */
-.image-wrapper {
-    width: 100%;
-    max-width: 700px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 1s ease;
-    transform: scale(1);
-    background-color: rgba(255, 255, 255, 0); /* Transparent background */
-    padding: 20px;
-    margin: 20px auto;
-}
-
-/* SVG Image Styles */
-.additional-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    transition: transform 0.5s ease;
-    transform-origin: center;
-    opacity: 1;
-}
-
-/* --------------------------
-   Map Section Styles
---------------------------- */
-/* Full-page map/* Ensure consistent box-sizing */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-/* Remove Horizontal Container Styles */
-.horizontal-container {
-    display: none; /* Hide the horizontal container */
-}
-
-/* Map Section Styles */
-#map-section {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    z-index: 2; /* Ensure it appears above the text-section */
-}
-/* Map container */
-#interactive-map {
-    height: 100%;
-    width: 100%;
-}
-
-/* Zoom button styles */
-#zoom-button {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    opacity: 0; /* Initially hidden */
-    visibility: hidden; /* Take it out of the layout */
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-    z-index: 1000;
-}
-
-#zoom-button.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Leaflet Control Title Styles */
-.leaflet-control-map-title {
-    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
-    padding: 10px;
-    border-radius: 5px;
-    font-family: 'Arial', sans-serif;
-}
-
-.leaflet-control-map-title h1 {
-    margin: 0;
-    font-size: 1.5em;
-    color: whitesmoke;
-}
-/* DivIcon Title Label Styles */
-.map-title-label div {
-    background-color: rgba(255, 255, 255, 0.0); /* Semi-transparent background */
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    font-size: 1.9em;
-    color: #ffffff;
-    box-shadow: 0 0px 0px rgba(0,0,0,0.3);
-}
-
-/* Info Panel Styles */
-#info-panel {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 25%;       /* Half the page width */
-    height: 100vh;    /* Full viewport height */
-    background-color: #f5f5dc; /* Cream color */
-    color: #000;      /* Black text color */
-    padding: 20px;
-    box-sizing: border-box;
-    transform: translateX(100%); /* Hidden by default */
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    opacity: 0;
-    z-index: 1000;
-}
-
-#info-panel.visible {
-    transform: translateX(0); /* Slide in */
-    opacity: 1;
-}
-
-#info-panel .info-content p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-#info-panel .info-content img {
-    width: 100%; /* Image takes full width */
-    border-radius: 5px;
-}
-
-#close-panel {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    color: white;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.info-content h2 {
-    margin-top: 5px;
-}
-
-.info-content a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-.info-content a:hover {
-    text-decoration: underline;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    #info-panel {
-        width: 100%;
-        height: 70%;
-    }
-}
-
-/* --------------------------
+/* ---------------------------
    Text Section Styles
 --------------------------- */
-
-/* Container for the Text Section */
 .text-section {
     position: relative; /* Establishes a positioning context for absolutely positioned elements */
-    padding: 80px 20px; /* Adjust padding as needed */
+    padding: 60px 20px; /* Adjust padding as needed */
     background-image: url('../images/contour-lines.svg'); /* Existing SVG Background */
     background-repeat: no-repeat;
     background-size: cover;
@@ -554,7 +309,7 @@ body {
     justify-content: center; /* Horizontally centers content */
     background-position: center;
     background-attachment: fixed; /* Optional: Creates a parallax scrolling effect */
-    min-height: 100vh; /* Ensures the section has adequate height */
+    min-height: 1%; /* Ensures the section has adequate height */
     overflow: hidden; /* Prevents child elements from overflowing the section */
     z-index: 1;
 }
@@ -570,7 +325,7 @@ body {
 }
 
 .small-text {
-    font-size: 24px;
+    font-size: 30px;
     color: #FF7E5F;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -599,7 +354,6 @@ body {
 }
 
 /* Responsive Adjustments */
-
 @media (max-width: 768px) {
     .text-section {
         padding: 60px 15px; /* Adjust padding for smaller screens */
@@ -638,213 +392,340 @@ body {
     }
 }
 
-/* --------------------------
-    Image Gallery Section Styles
+
+/* ---------------------------
+   Map Section Styles
 --------------------------- */
-.image-gallery-section {
+
+/* Map Section */
+#map-section {
     position: relative;
-    overflow: visible;
-    margin-bottom: 0;
-    background-color: #fff; /* White background */
-    color: #000; /* Black text */
-    height: 100vh; /* Full viewport height */
-    transition: background-color 1s ease; /* Smooth background transition */
     width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* Map Element */
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* Mapbox GL Canvas */
+.mapboxgl-canvas {
+    z-index: 2 !important;
+}
+
+/* Map Overlay */
+#map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column; /* Stack child elements vertically */
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 20;
 }
 
-
-/* Container for the images using CSS Grid */
-.image-gallery {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr); /* Three equal columns for three lanes */
-   grid-auto-rows: minmax(150px, auto);   /* Automatic row height */
-   gap: 40px; /* Space between lanes and images */
-   width: 90%; /* Changed from 200% to 90% to fit within the viewport */
-   max-width: 1200px; /* Maximum width for larger screens */
-   margin: 0 auto; /* Center the grid horizontally */
-   height: 100vh; /* Full viewport height */
-   align-items: center; /* Vertically center images within grid cells */
-   justify-items: center; /* Horizontally center images within grid cells */
-   perspective: 1000px; /* 3D perspective for child elements */
-   position: relative; /* To position images absolutely if needed */
+/* Overlay Content */
+.overlay-content {
+    text-align: center;
+    color: #fff;
+    pointer-events: auto; /* Enable interactions within the overlay */
 }
 
-/* Gallery Item Styling */
-.gallery-item {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   /* Initial scale */
-   transform: translate(-50%, -50%) scale(0.2);
-   opacity: 0; /* Start invisible */
-   transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transitions */
-   z-index: 1; /* Stacking context */
+.overlay-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
 }
 
-/* Gallery Image Styling */
-.gallery-image {
-   width: 200px; /* Adjust as needed */
-   height: 300px; /* Adjust as needed */
-   object-fit: cover;
-   border-radius: 10px;
-   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+.overlay-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
 }
 
-/* Lane Styling */
-.lane {
-   position: relative;
-   width: 100%;
-   height: 100%;
+#enter-map-btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #FF7E5F;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* Concluding Text Styles */
-.conclusion-container {
+#enter-map-btn:hover {
+    background-color: #E0664E;
+}
+
+/* Translucent Panel for Cards */
+.destination-panel {
+    position: absolute;
+    top: 0;
+    right: 1%;
+    height: 100%;
+    width: 15%; /* Increased from 15% to 30% */
+    background-color: rgba(255, 255, 255, 0);
+    z-index: 9999; /* Ensure it's below the map overlay */
+    border-radius: 10px;
+    padding: 10px;
+    overflow-y: hidden; /* Consider changing to 'auto' if content overflows */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styling for Individual Destination Cards */
+.destination-card {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Initial opacity set to 0 */
+    transform: translate(-50%, -50%) scale(0.95);
+    transition: all 0.3s ease;
+    width: 100%;
+    /* max-width: 300px; */ /* Removed or adjust as needed */
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0); /* Center and initial scale */
-    opacity: 0; /* Start hidden */
-    text-align: center;
-    z-index: 2;
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: center;    /* Center children horizontally */
-    width: 80%; /* Adjust as needed */
-    max-width: 1000px; /* Optional */
-    padding: 20px; /* Optional */
-    transition: transform 0.3s ease, opacity 0.3s ease; /* For smooth transition */
 }
 
-.concluding-text {
-    margin-bottom: 100px; /* Increase space between text and images */
-    position: static;    /* Remove absolute positioning */
-    transform: none;     /* Remove transforms */
-    opacity: 1;          /* Ensure it's visible */
-    z-index: auto;       /* Default stacking order */
-    text-align: center;
-    /* Increase font size */
-    font-size: 1.5em;
-    /* ...existing styles... */
+
+/* Destination Card States */
+.destination-card.active {
+    opacity: 1; /* Set opacity to 1 when active */
+    transform: translate(-50%, -50%) scale(1);
+    border: 2px solid #007AFF;
+    z-index: 3;
 }
 
-.conclusion-container img {
-    width: 500px; /* Adjust to desired width */
-    height: 500px; /* Maintain aspect ratio */
-    margin: 10px 0; /* Optional spacing */
+.destination-card.previous {
+    transform: translate(-50%, -150%) scale(0.8);
+    opacity: 0;
 }
 
-.concluding-text h2 {
-   font-size: 48px; /* Increase font size */
-   margin-bottom: 30px;
+.destination-card.next {
+    transform: translate(-50%, 150%) scale(0.8);
+    opacity: 0;
 }
 
-.concluding-text p {
-   font-size: 24px; /* Increase font size */
+.destination-card h3 {
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-/* Final Images Container */
-.final-images {
+.destination-card p {
+    margin: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.destination-card img {
+    width: 100%;
+    height: auto;
+
+    margin-bottom: 10px;
+}
+
+/* Scroll to Explore Text */
+.scroll-text {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    color: #555;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10001; /* Ensure it's below the map overlay */
+}
+
+/* Overlay Styling */
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10;
     display: flex;
     justify-content: center;
-    gap: 40px; /* Increase space between images */
-    /* Remove absolute positioning and transforms */
-    position: static;
-    transform: none;
-    width: 1000%;
-    opacity: 1; /* Visible within the container */
-    /* ...existing styles... */
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-/* Final Image Links */
-.final-link {
-    display: block;
-    width: 400px; /* Increase width */
-    height: 400px; /* Maintain square aspect ratio */
-    overflow: hidden;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effects */
-}
-
-.final-link:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
-}
-
-/* Final Images */
-.final-image {
-    width: 1000%;
-    height: 1000%;
-    object-fit: cover; /* Ensure images cover the container */
-    display: block;
+.map-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 /* Responsive Adjustments */
-@media (max-width: 1200px) {
-    .concluding-text h2 {
-        font-size: 36px; /* Adjust font size for smaller screens */
-    }
-
-    .concluding-text p {
-        font-size: 20px; /* Adjust font size for smaller screens */
-    }
-
-    .final-link {
-        width: 180px; /* Adjust width for smaller screens */
-        height: 180px; /* Maintain square aspect ratio */
+@media (max-width: 768px) {
+    .destination-panel {
+        width: 90%;
+        left: 5%;
+        right: 5%;
     }
 }
-
-/* --------------------------
-   Main Content Padding
---------------------------- */
-
-/* Main Content Padding to Prevent Overlap with Fixed Navbar */
-main {
-    padding: 100px 50px 50px; /* Top padding should be equal or greater than navbar height */
+/* Bird Section Styles */
+#bird-section {
+    padding: 50px 20px;
+    background-color: #f0f8ff;
 }
 
-/* Add styles for the new image section */
-#image-section {
-    position: relative;
-    height: 100vh;
+.bird-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bird-item {
+    flex: 1 1 calc(33.333% - 40px);
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    max-width: 100%;
+}
+
+.bird-image {
     width: 100%;
-    overflow: hidden;
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Ensures images cover the container without distortion */
+    display: block;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-.image-container {
-    position: relative;
+.bird-text {
+    text-align: center;
+}
+
+.bird-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.bird-text p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .bird-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .bird-item {
+        flex: 1 1 100%;
+    }
+}
+/* Call-to-Action Section Styles */
+#cta-section {
+    padding: 60px 20px;
+    background-color: #e8f5e9; /* Light green background */
+    text-align: center;
+}
+
+#cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2e7d32; /* Dark green color */
+}
+
+#cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    justify-content: center;
+    gap: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #2e7d32; /* Matching button color */
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #1b5e20; /* Darker on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .cta-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Itinerary Page Styles */
+#itinerary-section {
+    padding: 50px 20px;
+    background-color: #fff;
+}
+
+#itinerary-section h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#itinerary-section h2 {
+    color: #007AFF;
+    margin-top: 30px;
+}
+
+#itinerary-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+#itinerary-section table {
     width: 100%;
-    height: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-.background-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+#itinerary-section th, #itinerary-section td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
 }
 
-.overlay-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* Adjust width and height as needed */
-}
-
-/* Styles for the panorama section */
-#panorama-section {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-
-#panorama-viewer {
-    width: 100%;
-    height: 100%;
+#itinerary-section th {
+    background-color: #f0f0f0;
 }
