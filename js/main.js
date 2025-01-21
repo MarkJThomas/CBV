@@ -25,11 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.warn('Burger or navLinks element not found');
     }
-
-    // -------------------
-    // GSAP Animations
-    // -------------------
-
     // -------------------
     // Map Section
     // -------------------
